@@ -23,10 +23,11 @@ Here is what we are going to do to create our *1st* component. (some of these st
     - This will be where we create **all** of our components
 1. Inside of the new ```src/components``` folder, create another folder called ```video```
     - ```video``` is going to be the name of the component that we create. It is best-practice to name the folder and your component name the same
-1. Inside of the new ```src/components/video``` folder, create a new file called ```video.tsx```.
+1. Inside of the new ```src/components/video``` folder, create a new file called ```Video.tsx```.
     - This is the file that holds the code for our component
+    - Name with a capital letter
     - The ```.tsx``` file extension is the extension for React components
-1. Inside of the ```video.tsx``` file, create a new function with the line ```export default function Video() {...}```
+1. Inside of the ```Video.tsx``` file, create a new function with the line ```export default function Video() {...}```
     - The "..." just means keep it empty don't actually put them in there
     - ```export```: means that this function can be "seen" by other parts of our application. Without using ```export```, there is no way for other files in our app to use our component.
     - ```default```: means that this is the **only** thing from this file that can be seen by other files. This is good practice for creating components
