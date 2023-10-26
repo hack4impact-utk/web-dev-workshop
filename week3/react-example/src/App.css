@@ -1,0 +1,14 @@
+/* This stuff below just gets rid of some weird default styling that is done */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d1d1d;
+  width: 100vw; /* vw stands for "view width" we do this to say this div has the width of the full view width */
+  height: 100vh; /*vh stands for "view height" we do this to say that this div takes up the full view height */
+}

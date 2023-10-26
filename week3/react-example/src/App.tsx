@@ -5,8 +5,9 @@ function App() {
 
   return (
     <>
-      <h1>Hello React</h1>
-      <Video/>
+      <div className="home-container">
+        <Video/>
+      </div>
     </>
   )
 }
