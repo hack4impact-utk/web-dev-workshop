@@ -1,4 +1,4 @@
-# Lesson 3 Step 3:  Make Video Configurable
+# Lesson 3 Step 4:  Make Video Configurable
 In the last step, we created a React component for a video, but you might have noticed that we are still not able to make more than 1 different video. If we use that video component multiple times, it will just copy-paste the exact same video with the same information. This is obviously not good, so in this step we will make it easy to create videos.
 
 ## How do we make it configurable?
