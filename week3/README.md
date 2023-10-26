@@ -19,22 +19,22 @@ If you wanted to create your own React app with TypeScript from scratch like I d
 1. **Make sure you have node.js installed**
 1. Navigate to whatever folder you want to create your application in. This can be any folder you want
 1. Run the command ```npm create vite@latest```. This command runs the program that creates our application for us.
-  - ```vite``` is a program that is commonly used to create many types of web applications
-  - We will be using it here to create a **React** application
+  1. ```vite``` is a program that is commonly used to create many types of web applications
+  1. We will be using it here to create a **React** application
 1. After running ```npm create vite@latest```, you should see something that says ```? Project name: >> vite-project```. If you start typing, you will be able to name your project whatever you want! Hit enter once you have decided your name.
-  - For the ```react-example``` project I already created in this repository, this is where I put "react-example" to name it.
-  - NOTE: you an actually type ```.``` as the name of your project, and this will create the application in the folder that you are currently in rather than creating a new folder. 
+  1. For the ```react-example``` project I already created in this repository, this is where I put "react-example" to name it.
+  1. NOTE: you an actually type ```.``` as the name of your project, and this will create the application in the folder that you are currently in rather than creating a new folder. 
 1. After putting the name of your project and hitting enter, you should now see a dropdown of options with things like ```Vanilla```, ```Vue```, ```React```, ```Preact```, etc... Since we are going to be making a ```React``` application, we are going to use that option. 
-  - To select that option, use the arrow keys to move up and down the menu.
-  - When the pointer is at the ```React``` option, hit enter to select it
+  1. To select that option, use the arrow keys to move up and down the menu.
+  1. When the pointer is at the ```React``` option, hit enter to select it
 1. After selecting ```React``` from the menu, you should now see another menu with options like ```TypeScript```, ```TypeScript + SWC```, etc... We are making a TypeScript project, so we are going to select that option.
-  - Just like the last menu, you can use the arrow keys to move up and down.
-  - For me, TypeScript is the first option, but navigate to where it is for you and hit enter to select it.
-  - I did not choose ```TypeScript + SWC```. If you are curious, SWC is a compiler that is very quick and uses the Rust programming language. If you are interested in that kind of stuff check it out [here](https://swc.rs/)
+  1. Just like the last menu, you can use the arrow keys to move up and down.
+  1. For me, TypeScript is the first option, but navigate to where it is for you and hit enter to select it.
+  1. I did not choose ```TypeScript + SWC```. If you are curious, SWC is a compiler that is very quick and uses the Rust programming language. If you are interested in that kind of stuff check it out [here](https://swc.rs/)
 1. After hitting enter on the ```TypeScript``` option, the application should now be created! ```Vite``` should have listed some commands for you to run the application, but here they are anyway:
-  - Navigate to the folder that ```Vite``` created for you. To do this, run the command ```cd [name of project]```. Just replace the text in the square brackets with the name of the project you chose, and do not include the brackets in the command. If you chose ```.``` as the name of the project, the application should be created in the folder you ran the ```npm create vite@latest``` command, so you should already be in the right place.
-  - Once inside the folder of the new applciation, run the command ```npm install```. This installs any *dependencies* that the project needs to run properly. We will cover what dependencies are later in this lesson.
-  - After running the install command, run the command ```npm run dev```. This will compile and run the application! ```Vite``` should have output a URL to follow, and if you navigate to this URL in any web browswer, you will be able to see your new React application!
+  1. Navigate to the folder that ```Vite``` created for you. To do this, run the command ```cd [name of project]```. Just replace the text in the square brackets with the name of the project you chose, and do not include the brackets in the command. If you chose ```.``` as the name of the project, the application should be created in the folder you ran the ```npm create vite@latest``` command, so you should already be in the right place.
+  1. Once inside the folder of the new applciation, run the command ```npm install```. This installs any *dependencies* that the project needs to run properly. We will cover what dependencies are later in this lesson.
+  1. After running the install command, run the command ```npm run dev```. This will compile and run the application! ```Vite``` should have output a URL to follow, and if you navigate to this URL in any web browswer, you will be able to see your new React application!
 
 You should now have your own React + TypeScript application!
 
