@@ -36,6 +36,23 @@ If you wanted to create your own React app with TypeScript from scratch like I d
     - Once inside the folder of the new applciation, run the command ```npm install```. This installs any *dependencies* that the project needs to run properly. We will cover what dependencies are later in this lesson.
     - After running the install command, run the command ```npm run dev```. This will compile and run the application! ```Vite``` should have output a URL to follow, and if you navigate to this URL in any web browswer, you will be able to see your new React application!
 
+**NOTE**: When your app is done being created, and you run it, you will see some logos on the page. This is just some base code that Vite has included in order to show you that you app is working. You can actaully get rid of most of this, and I would recommend that you do that. Below is the code that shows what you should keep:
+```ts
+import './App.css'
+
+function App() {
+
+  return (
+    <>
+      <h1>Hello React</h1>
+    </>
+  )
+}
+
+export default App
+```     
+Everything else is unecessary, and technically you don't need to have that ```<h1>``` tag in there, but I keep it just to show that it is still working right.
+
 You should now have your own React + TypeScript application!
 
 ## What is React?
