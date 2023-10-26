@@ -1,92 +1,71 @@
-# Lesson 3 Step 3:  Make Video Configurable
-In the last step, we created a React component for a video, but you might have noticed that we are still not able to make more than 1 different video. If we use that video component multiple times, it will just copy-paste the exact same video with the same information. This is obviously not good, so in this step we will make it easy to create videos.
+# Lesson 3 Step 5: Dynamically render the videos
+In the last step, we made it so that our video components were able to take in props in order to create different ones without repeating ourself too much.    
+However, we can still take this one more step further.    
 
-## How do we make it configurable?
-The way to make React Components configurable is through something called *props*.      
-Props are actually pretty simple to think about. If you have used functions in Java/C++, you can think of props simply as function parameters.      
+Let's say we needed to render (show on the page) 100 videos. This is obviously not something we want to write over and over again. Also, when someone posts a video on Youtube, there isn't someone who then writes the Component and adds it to the page, that video and its information is put into a database, and then youtube reads information from that database to render all the vidoes.     
 
-For example, in C++ if I was to write
-```c++
+For this example, we aren't going to be working with databases, but what we can do is read them from an array, and maybe even a file.     
 
-int add(int a, int b) {
-  return a + b;
-}
+## Setting up for dynamic rendering
+We are actually done with our Component! There is nothing in the component that we need to change to do dynamic rendering.    
+What we do have to change is our ```App()``` component.    
 
-int main() {
-  int number = add(1, 2);
-  int number2 = add(3, 4);
-}
-```
-You can see in this example that I have the ```main()``` function which you should think of as our ```App()``` component.     
-We also have our ```add(int a, int b)``` function in C++ which you can think of as our ```Video()``` component.       
-Our ```add``` function has the two parameters ```a``` and ```b```. This is the way that the function can use the parameters and do a different result each time. This is done by our ```main``` function calling ```add``` 2 different times with different *arguments*.      
+Here are the general steps we are going to take to refactor for dynamic rendering:
+1. Create an array where we will store information for each video
+1. Add the information to the array
+1. Loop through the array and render a component for each value in the array using the things in the array as the props for each component
 
-The same can be done with *props* in React. In the same way that we can use functions with parameters, we use Components with props.        
+And that's it! It is actually really simple, and this is something that you are going to be doing **a lot** of in React.
 
-## How to use Props in TypeScript
-TypeScript has the awesome ability to do *type checking*. This means that we need to know what data types our props are going to be.    
-
-To show you what this looks like, I will do a basic example below:
-```ts
-interface exampleProps {
-  name: string;
-  age: number;
-}
-```
-In this example, we have defined what data types our props are going to be, and now we know what pieces of our props we can use as well. 
-
-## How to make our component **take** props
-Now that we have defined props, we need to make sure that our Component has the ability to use them.
-
-To start, here is a version of props we are going to use for our videos:
-```ts
-interface videoProps {
-  title: string;
-  profileName: string;
-}
-```
-This interface contains the title of the video and the name of the profile who posted it.     
-Now we need to change our component to accept these props. Doing this is simple. Change the function prototype of the ```Video()``` component to be 
-```ts
-export default function Video(props: videoProps) {...}
-```
-All you need to change is put the props in the parentheses like any normal function parameter. Also, since this is TypeScript, we need to make sure we say what data type our props are going to be. We defined the interface for ```videoProps``` so now we can use that.        
-
-## Using props inside of the component
-Now is the fun part. Our component is now able to take in props, but we still don't use them yet. This is where the real power of React starts to show.       
-
-Inside of the "HTML" that we have written for the component, we need to change the hard-coded text to the props that we have defined. The easiest example of this is the video title. Change your code in ```Video.tsx``` to be:
-```ts
-<h1 className="video-title">{props.title}</h1>
-```
-Notice that we changed it from normal text inside the `<h1>` tag to using ```{}```. This is **very** important. Using `{}` inside of React allows you to use variables.     
-
-Also notice we use ```props.title``` to use the title. **When using variables from props, we always use props.[variable] to refer to it**
-
-Now we change the line below as well to make the component use the ```profileName``` part of our props.
-
-
-However, if you run this code, you may notice that it still doesn't work. The reason for this is because we have not passed in the function *arguments*. Going back to the C++ example from earlier. Our ```App()``` component is our ```main()``` function. Inside of the main() function, we called the ```add()``` function with multiple different values. These values are the arguments. We need to do the same thing for our Component.
-
-## Passing in props **to** the component
-Our component now takes in props, but we need to **pass** them in now. This means that in our ```App()``` component we need to set the props that we want.      
-
-In ```App.tsx```, change where we have our ```<Video/>``` component to this:
+To complete the first step, we will create an array inside of our ```App()``` function like this:
 ```tsx
-<Video
-  title="Maintainability and Readability | Prime Reacts"
-  profileName="ThePrimeagen"
-/>
+const videoInfos = [];
 ```
-You might notice that this is similar to setting and `id` or `class` in HTML, and this is why I like to think about Componeents as both functions and custom HTML tags.   
 
-To see two *different* videos now, add this:
+With the array for our information created, we now need to add that information to the array.
+You can do that simply by doing this:
 ```tsx
-<Video
-  title="Another video"
-  profileName="pewdiepie"
-/>
+const videoInfos = [
+  {
+    title: "Video 1 Title",
+    profileName: "ThePrimeagen",
+    thumbnailSrc: "https://external-preview.redd.it/theprimeagen-on-typescript-v0-4YJWaQmG4CvdtUe_-Qq7m-HahYu_UJNUXYwV1IPa8F0.jpg?width=640&crop=smart&auto=webp&s=a9990110daef8d4cd9cdc0d908d1d51dfe321f24",
+    profilePicSrc: "https://pbs.twimg.com/profile_images/1614986714795180033/yOQly3os_400x400.jpg"
+  }
+];
 ```
-You should now see two videos with different titles and profiles on the page!
+NOTE: if your props interface for a video looks different, change yours to follow that instead of mine.   
+For now, we will only put one video in the array. The point of this whole step is that we can put however many we want in here.     
 
-With that added, we can now create multiple videos with whatever title and profile name that we want! There is obviously more to do with props like changing the images, and I challenge you to do that on your own. The completed code is in this branch, so you can look at that if you get stuck.      
+With the array created, we now need to *map* through it and render each component. The way we do this is with the ```array.map()``` method. There is going to be some syntax here that you may not have seen yet, but I will explain it.    
+
+Inside of our ```render(...)``` statement in our App() component, we need to change it from rendering our specific components to using the .map() method. We can do this like this:
+```tsx
+function App() {
+  ...
+  return (
+    <>
+      {
+        videoInfos.map(function(data) {
+          return (
+            <Video
+              title={data.title}
+              profileName={data.profileName}
+              thumbnailSrc={data.thumbnailSrc}
+              profilePicSrc={data.profilePicSrc}
+            />
+          )
+        })
+      }
+    </>
+  )
+}
+```
+There is a lot to look at here.     
+First, what the `.map()` method does is loop through the array, and it **runs the function** that we gave it. In TypeScript, you can create functions inside of functions. This is something that is really cool, and you should check this out on your own. For now, just know that we are able to create our own function inside of the .map() method.      
+
+Because we created a function inside of the .map() method, it needs to return something. In this case, all we are doing is returning the Component we created. Think of this as returning a component for each element in the array. **Think of returning the Component as creating it. Because we are creating this component, think of this as the same as if we wrote it like before, but this function is doing that for us**.      
+
+With that, you should see one video like before, but now you can add any number of videos to this array with whatever values you want.      
+
+See, that is actually pretty simple. .map() can be weird to get used to, but you will find it easy to use very quickly.
