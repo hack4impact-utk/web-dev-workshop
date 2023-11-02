@@ -14,6 +14,9 @@ If you want to follow along with us in the demo in the lesson, here are the step
     - Go to this url, mine is `http://127.0.0.1:5173/`
     - You should now see the text "Hello React" on your screen
 
+## Utils for the demo
+[Pokemon API](https://pokeapi.co/)
+
 ## What is a hook?
 Remember what we did last week with useState()? It allowed us to use 1 function, and when we used that function to change its corresponding variable, it updated it everywhere on the page. This is something that is not trivial to do on your own, but React gave us the *hook* `useState` that made this super easy for us.      
 Essentially, I like to think of hooks as special things that React gives you to make complicated things much easier. There are many hooks, but the main other one we are going to go over today is `useEffect`.     
