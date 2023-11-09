@@ -1,0 +1,24 @@
+{
+  "name": "week5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "populate-users": "tsc && node dist/util/populate-users.js",
+    "find-by-id": "tsc && node dist/find-by-id.js",
+    "get-all": "tsc && node dist/get-all.js",
+    "create-user": "tsc && node dist/create-user.js",
+    "delete-user": "tsc && node dist/delete-user.js",
+    "create-tweet": "tsc && node dist/create-tweet.js",
+    "get-tweets": "tsc && node dist/get-tweets.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.0.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
