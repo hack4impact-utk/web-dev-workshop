@@ -10,7 +10,8 @@
     "create-user": "tsc && node dist/create-user.js",
     "delete-user": "tsc && node dist/delete-user.js",
     "create-tweet": "tsc && node dist/create-tweet.js",
-    "get-tweets": "tsc && node dist/get-tweets.js"
+    "get-tweets": "tsc && node dist/get-tweets.js",
+    "zod": "tsc && node/dist/zod.js"
   },
   "author": "",
   "license": "ISC",
