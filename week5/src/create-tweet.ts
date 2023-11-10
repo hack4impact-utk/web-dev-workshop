@@ -7,4 +7,4 @@ async function createTweet() {
   // Your code here
 }
 
-createTweet();
+createTweet().then(() => process.exit(0));

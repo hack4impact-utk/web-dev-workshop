@@ -7,4 +7,4 @@ async function createUser() {
   // Your code here
 }
 
-createUser();
+createUser().then(() => process.exit(0));

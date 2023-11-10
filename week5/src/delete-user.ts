@@ -5,9 +5,6 @@ async function deleteUser(id: string) {
   await dbConnect();
 
   // Your code here
-
-  await UserSchema.findByIdAndDelete(id);
 }
 
-// @ts-expect-error
-deleteUser(/* insert id here */);
+deleteUser('').then(() => process.exit(0));

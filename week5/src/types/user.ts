@@ -3,7 +3,7 @@ import { z } from 'zod';
 /* Base */
 const zUser = z.object({
   username: z.string(),
-  name: z.string(),
+  name: z.string().optional(),
   email: z.string().email(),
   isVerified: z.boolean(),
   numFollowers: z.number(),

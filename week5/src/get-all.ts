@@ -7,4 +7,4 @@ async function getAll() {
   // Your code here
 }
 
-getAll();
+getAll().then(() => process.exit(0));

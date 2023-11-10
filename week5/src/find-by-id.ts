@@ -7,5 +7,4 @@ async function findUserById(id: string) {
   console.log(user);
 }
 
-// @ts-ignore
-findUserById('654d6c9239e4e9d5e0ffd7d2');
+findUserById('').then(() => process.exit(0));
