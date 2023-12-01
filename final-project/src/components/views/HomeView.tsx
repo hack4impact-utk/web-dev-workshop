@@ -27,8 +27,8 @@ export default function HomeView({ todoItems, addItem, onComplete }: HomeViewPro
   }
 
   function createItem() {
-    if (newName == '' || newDesc == '') {
-      alert("An item needs both a name and a description");
+    if (newName == '') {
+      alert("An item needs a name");
     } else {
       const newItem = {
         name: newName,
