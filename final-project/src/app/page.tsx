@@ -1,23 +1,34 @@
 'use client' // make this a client rendered component
 import HomeView from "@/components/views/HomeView";
-import { TodoItem } from "@/types/todo-item";
-import { useState } from "react";
+import zTodoItem, { TodoItem, TodoItemResponse, zGetAllTodoItemsResponse, zTodoItemResponse } from "@/types/todo-item";
+import { useEffect, useState } from "react";
+import { z } from "zod";
 
-const itemList: TodoItem[] = [ // items to dynamically render
-  {
-    name: "Finish project",
-    desc: "complete the project for COSC 102",
-    completed: false
-  },
-  {
-    name: "Complete lab report",
-    desc: "lab report for EF 157. This should be completed by next wednesday",
-    completed: false
-  },
-];
+async function getTodoItems(): Promise<TodoItemResponse[]> {
+  const response = await fetch('/api/items');
+  if (response.status !== 200) {
+    return []
+  }
+  const data = await response.json();
+
+  const validationResult = zGetAllTodoItemsResponse.safeParse(data);
+  if (validationResult.success) {
+    return validationResult.data;
+  }
+  console.error(validationResult.error)
+  return [];
+}
 
 export default function Home() {
-  const [items, setItems] = useState(itemList);
+  const [items, setItems] = useState<TodoItemResponse[]>([] as TodoItemResponse[]);
+
+  useEffect(() => {
+    getTodoItems().then((ti) => {
+      console.log(ti)
+      setItems(ti);
+    })
+  }, [])
+
 
   const onComplete = (item: TodoItem) => {
     const newItems = items.map((todoItem) => {
@@ -35,7 +46,11 @@ export default function Home() {
   }
 
   const addItem = (item: TodoItem) => {
-    setItems([...items, item]);
+    const newItem = {
+      _id: "temp",
+      ...item
+    }
+    setItems([...items, newItem]);
   }
 
   return (

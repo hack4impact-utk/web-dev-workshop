@@ -13,5 +13,3 @@ export function GET(_req: NextRequest, routeParams: RouteParams) {
     itemId
   }, { status: 200})
 }
-
-/* Define your handler to create an item below */

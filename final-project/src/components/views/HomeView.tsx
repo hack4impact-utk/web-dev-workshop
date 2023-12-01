@@ -2,7 +2,7 @@
 import { Typography , Box, Button, TextField } from "@mui/material"
 import { Dialog , DialogTitle, DialogActions, DialogContent} from "@mui/material"
 import { EventHandler, SyntheticEvent, useState } from 'react'
-import { TodoItem } from "@/types/todo-item";
+import { TodoItem, TodoItemResponse } from "@/types/todo-item";
 import Item from "../TodoItem"
 
 
@@ -15,7 +15,7 @@ type TextEventHandler<T = Element> = EventHandler<TextEvent<T>>;
 
 
 interface HomeViewProps {
-  todoItems: TodoItem[];
+  todoItems: TodoItemResponse[];
   addItem: (item: TodoItem) => void;
   onComplete: (item: TodoItem) => void;
 }
