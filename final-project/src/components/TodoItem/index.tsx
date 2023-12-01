@@ -1,11 +1,12 @@
+import { TodoItem } from '@/types/todo-item';
 import { Box, Typography, Checkbox } from '@mui/material'
 
 interface props {
-  name: string;
-  desc: string;
+  item: TodoItem
+  onComplete: (item: TodoItem) => void;
 }
 
-export default function TodoItem(params: props) {
+export default function TodoItem({ item, onComplete}: props) {
   return <>
     <Box sx={{
       // backgroundColor: 'lightgrey',
@@ -23,6 +24,8 @@ export default function TodoItem(params: props) {
           transform: "scale(0.5)",
           width: 10,
         }}
+        checked={item.completed}
+        onChange={() => onComplete(item)}
       />
       <Typography 
         variant="h6"
@@ -33,8 +36,9 @@ export default function TodoItem(params: props) {
           fontSize: 12,
           ml: 1,
         }}>
-          {params.name}:
+          {item.name}:
       </Typography>
+      { item.desc && 
       <Typography 
         variant="h6"
         component="p"
@@ -44,8 +48,9 @@ export default function TodoItem(params: props) {
           fontSize: 8,
           ml: 1
         }}>
-          {params.desc}
+          {item.desc}
       </Typography>
+      }
     </Box>
   </>
 }

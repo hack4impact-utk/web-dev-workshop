@@ -2,7 +2,8 @@ import { z } from 'zod';
 
 const zTodoItem = z.object({
   name: z.string(),
-  completed: z.boolean(),
+  completed: z.boolean().default(false),
+  desc: z.string().optional(),
 });
 
 export const zTodoItemEntity = zTodoItem.extend({
