@@ -4,4 +4,8 @@ export async function getAllItems() {
   return await TodoItem.find({});
 }
 
-/* Define your server functions to create and complete an item below */
+export async function completeItem(id: string) {
+  await TodoItem.findByIdAndUpdate(id, { completed: true });
+}
+
+/* Define your server functions to create an item below */

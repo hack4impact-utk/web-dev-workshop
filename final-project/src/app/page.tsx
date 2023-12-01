@@ -19,6 +19,16 @@ async function getTodoItems(): Promise<TodoItemResponse[]> {
   return [];
 }
 
+async function completeItem(item: TodoItemResponse) {
+  const response = await fetch(`/api/items/${item._id}/complete`, {
+    method: 'POST',
+  });
+
+  if (response.status !== 200) {
+    console.error(response);
+  }
+}
+
 export default function Home() {
   const [items, setItems] = useState<TodoItemResponse[]>([] as TodoItemResponse[]);
 
@@ -30,12 +40,13 @@ export default function Home() {
   }, [])
 
 
-  const onComplete = (item: TodoItem) => {
+  const onComplete = async (item: TodoItemResponse) => {
+    await completeItem(item);
     const newItems = items.map((todoItem) => {
       if (todoItem.name === item.name) {
         return {
           ...todoItem,
-          completed: !todoItem.completed
+          completed: true
         }
       } else {
         return todoItem;

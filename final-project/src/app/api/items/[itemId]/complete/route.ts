@@ -1,6 +1,6 @@
-/* Define your handler to complete an item below */
-
-import { NextRequest } from "next/server";
+import { completeItem } from "@/server/actions/TodoItem";
+import dbConnect from "@/util/db-connect";
+import { NextRequest, NextResponse } from "next/server";
 
 interface RouteParams {
   params: {
@@ -8,6 +8,12 @@ interface RouteParams {
   }
 }
 
-export function POST(req: NextRequest, routeParams: RouteParams) {
-  
+export async function POST(req: NextRequest, routeParams: RouteParams) {
+  await dbConnect();
+
+  const { itemId } = routeParams.params;
+
+  await completeItem(itemId);
+
+  return NextResponse.json({}, {status: 200})
 }

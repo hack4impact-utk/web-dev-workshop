@@ -1,23 +1,15 @@
 'use client' // make this a client rendered component
 import { Typography , Box, Button, TextField } from "@mui/material"
 import { Dialog , DialogTitle, DialogActions, DialogContent} from "@mui/material"
-import { EventHandler, SyntheticEvent, useState } from 'react'
+import { useState } from 'react'
 import { TodoItem, TodoItemResponse } from "@/types/todo-item";
 import Item from "../TodoItem"
-
-
-interface TextEvent<T = Element> extends SyntheticEvent<T> {
-  text: string;
-}
-
-type TextEventHandler<T = Element> = EventHandler<TextEvent<T>>;
-
 
 
 interface HomeViewProps {
   todoItems: TodoItemResponse[];
   addItem: (item: TodoItem) => void;
-  onComplete: (item: TodoItem) => void;
+  onComplete: (item: TodoItemResponse) => void;
 }
 
 export default function HomeView({ todoItems, addItem, onComplete }: HomeViewProps) {
